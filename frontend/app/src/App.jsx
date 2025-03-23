@@ -20,13 +20,14 @@ function App() {
       <div className="app-container">
         <Sidebar expanded={sidebarExpanded} toggleSidebar={toggleSidebar} />
         <div className={`main-content ${sidebarExpanded ? 'sidebar-expanded' : 'sidebar-collapsed'}`}>
-          <header className="main-header">
-            <h1>Meu Aplicativo</h1>
-            <div className="user-controls">
+          
+          {/* <header className="main-header"> */}
+            {/* <h1>Meu Aplicativo</h1> */}
+            {/* <div className="user-controls"> */}
               {/* <span className="user-name">Usuário</span> */}
-              <i className="bi bi-person-circle"></i>
-            </div>
-          </header>
+              {/* <i className="bi bi-person-circle"></i> */}
+            {/* </div> */}
+          {/* </header> */}
           <div className="content-area">
             <Routes>
               <Route path="/" element={<HomePage />} />
