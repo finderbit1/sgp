@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Accordion, Tab, Tabs, Container, Button } from 'react-bootstrap';
+import { Form, Accordion, Tab, Tabs, Container, Button, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FormPainel from './FormPainel';
 import FormTotem from './FormTotem';
@@ -33,14 +33,14 @@ function TypeProduction() {
 
 function FormOrder() {
     const [count, setCount] = useState(1);
-    const [tabs, setTabs] = useState([{ eventKey: `tab-${count}`, title: `Tab ${count}`, content: <TypeProduction/> }]);
+    const [tabs, setTabs] = useState([{ eventKey: `tab-${count}`, title: `Tab ${count}`, content: <TypeProduction /> }]);
 
     const adTab = () => {
         const newCount = count + 1;
         setCount(newCount);
         setTabs([
             ...tabs,
-            { eventKey: `tab-${newCount}`, title: `Tab ${newCount}`, content: <TypeProduction/> },
+            { eventKey: `tab-${newCount}`, title: `Tab ${newCount}`, content: <TypeProduction /> },
         ]);
     };
 
@@ -56,36 +56,40 @@ function FormOrder() {
 
     return (
         <>
-            <Tabs
-                defaultActiveKey="tab-1"
-                id="container-tabs"
-                className="mb-3"
-            >
-                {tabs.map((tab, index) => (
-                    <Tab
-                        eventKey={tab.eventKey}
-                        title={
-                            <>
-                                {tab.title} 
-                                <span 
-                                    onClick={() => removeTab(tab.eventKey)} 
-                                    style={{ cursor: 'pointer', marginLeft: '10px', color: 'red' }}
-                                >
-                                    &#10005; {/* X character */}
-                                </span>
-                            </>
-                        }
-                        key={index}
-                    >
-                        {tab.content}
-                    </Tab>
-                ))}
-            </Tabs>
-            <Container>
-                <Button onClick={adTab}>
-                    Adicionar Aba
-                </Button>
-            </Container>
+            <Card>
+                <Tabs
+                    defaultActiveKey="tab-1"
+                    id="container-tabs"
+                    className="mb-3"
+                >
+                    {tabs.map((tab, index) => (
+                        <Tab
+                            eventKey={tab.eventKey}
+                            title={
+                                <>
+                                    {tab.title}
+                                    <span
+                                        onClick={() => removeTab(tab.eventKey)}
+                                        style={{ cursor: 'pointer', marginLeft: '10px', color: 'red' }}
+                                    >
+                                        &#10005; {/* X character */}
+                                    </span>
+                                </>
+                            }
+                            key={index}
+                        >
+                            {tab.content}
+                        </Tab>
+                    ))}
+                </Tabs>
+            </Card>
+            <div className="p-12">
+                <Container>
+                    <Button onClick={adTab}>
+                        Adicionar Aba
+                    </Button>
+                </Container>
+            </div>
         </>
     );
 }
